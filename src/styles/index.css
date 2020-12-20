@@ -1,0 +1,55 @@
+@tailwind base;
+
+/* Write your own custom base styles here */
+
+/* Start purging... */
+@tailwind components;
+/* Stop purging. */
+
+html,
+body {
+  @apply bg-gray-50 dark:bg-gray-900 min-h-screen;
+}
+
+#__next {
+  @apply min-h-screen;
+}
+
+.text {
+  @apply text-gray-700 dark:text-gray-100;
+}
+
+/* Write your own custom component styles here */
+.btn-blue {
+  @apply px-4 py-2 font-bold text-white bg-blue-500 rounded;
+}
+
+.list {
+  @apply p-5 border border-blue-600 dark:border-gray-300 rounded;
+}
+
+.content {
+  @apply p-2;
+}
+
+ul > li {
+  @apply dark:text-gray-100;
+}
+
+p {
+  @apply text;
+}
+
+h1 {
+  @apply text;
+}
+
+.center {
+  @apply place-items-center place-content-center;
+}
+
+/* Start purging... */
+@tailwind utilities;
+/* Stop purging. */
+
+/* Your own custom utilities */
