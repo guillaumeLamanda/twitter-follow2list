@@ -1,0 +1,15 @@
+{
+  "extends": ["config:base"],
+  "packageRules": [
+    {
+      "updateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "updateTypes": ["major"],
+      "automerge": true
+    }
+  ],
+  "commitMessageAction": "⬆️ bump",
+  "unicodeEmoji": true
+}
