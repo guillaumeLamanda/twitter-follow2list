@@ -1,3 +1,25 @@
 type Query {
-  hello: String
+  hello: String!
+  friends(pagination: Pagination): [User!]!
+}
+
+input Pagination {
+  first: Int
+  after: ID
+}
+
+interface Node {
+  id: ID!
+}
+
+interface Edge {
+  node: Node!
+  cursor: ID!
+}
+
+type User implements Node {
+  id: ID!
+  name: String!
+  imageSrc: String!
+  screenName: String!
 }
