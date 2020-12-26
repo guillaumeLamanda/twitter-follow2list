@@ -1,17 +1,14 @@
-import { useState } from "react";
+import { useField } from "formik";
 
 type ListTitleInputProps = {
-  title: string;
+  name: string;
 };
-const ListTitleInput = ({ title }: ListTitleInputProps) => {
-  const [value, setValue] = useState(title);
-
+const ListTitleInput = ({ name }: ListTitleInputProps) => {
+  const [fieldInputProps] = useField(name);
   return (
     <input
-      name="title"
+      {...fieldInputProps}
       placeholder="list name"
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
       className="flex flex-row dark:bg-gray-600 dark:text-gray-100 p-1 rounded"
     />
   );

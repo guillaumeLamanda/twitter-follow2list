@@ -1,9 +1,37 @@
 import { useState } from "react";
-import ListDescriptionInput from "./ListDescriptionInput";
-import ListTitleInput from "./ListTitleInput";
+import { useListQuery } from "graphql/queries/list.graphql";
+import ListForm from "./ListForm";
 
-function ListListItem({ name, description }) {
+type ListListItemProps = {
+  id: string;
+  slug: string;
+};
+function ListListItem({ id, slug }: ListListItemProps) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  const { data, loading, error } = useListQuery({
+    variables: { id, slug },
+    fetchPolicy: "cache-first",
+  });
+
+  if (loading) return <p>loading...</p>;
+  if (error) return <p>{error.message}</p>;
+
+  const {
+    list: { name, description },
+  } = data;
+
+  if (isEditing)
+    return (
+      <li className="flex py-3 place-items-center place-content-between transition-all ease-in-out">
+        <ListForm
+          id={id}
+          slug={slug}
+          description={description}
+          name={name}
+          onSubmit={() => setIsEditing(false)}
+        />
+      </li>
+    );
 
   return (
     <li
@@ -28,24 +56,12 @@ function ListListItem({ name, description }) {
         e.stopPropagation();
       }}
     >
-      <div className="space-y-1">
-        {isEditing ? (
-          <>
-            <ListTitleInput title={name} />
-            <ListDescriptionInput description={description} />
-          </>
-        ) : (
-          <>
-            <span className="text-lg font-bold">{name}</span>
-            <span>{description}</span>
-          </>
-        )}
+      <div className="space-y-1 flex flex-col">
+        <span className="text-lg font-bold">{name}</span>
+        <span>{description}</span>
       </div>
-      {isEditing ? (
-        <button onClick={() => setIsEditing(false)}>save</button>
-      ) : (
-        <button onClick={() => setIsEditing(true)}>edit</button>
-      )}
+
+      <button onClick={() => setIsEditing(true)}>edit</button>
     </li>
   );
 }

@@ -9,7 +9,7 @@ import {
   FriendsQueryVariables,
   useFriendsQuery,
 } from "graphql/queries/friends.graphql";
-import { useListQuery } from "graphql/queries/lists.graphql";
+import { useListsQuery } from "graphql/queries/lists.graphql";
 import { FriendListItem, ListListItem } from "components";
 
 const PAGE_SIZE = 15;
@@ -24,7 +24,7 @@ const AppPage: NextPage<Props> = () => {
   const { data: { friends } = {} } = useFriendsQuery({
     variables: { first: PAGE_SIZE },
   });
-  const { data: { lists } = {} } = useListQuery();
+  const { data: { lists } = {} } = useListsQuery();
 
   const toggleSelectedId = (id) => {
     setSelected(
@@ -61,8 +61,8 @@ const AppPage: NextPage<Props> = () => {
       </ul>
 
       <ul className="list w-1/4">
-        {lists?.map(({ name, description, id }) => (
-          <ListListItem key={id} name={name} description={description} />
+        {lists?.map(({ id, slug }) => (
+          <ListListItem key={id} id={id} slug={slug} />
         ))}
       </ul>
     </div>

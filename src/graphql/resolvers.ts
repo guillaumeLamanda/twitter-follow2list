@@ -1,3 +1,4 @@
+import { ApolloError } from "apollo-server-micro";
 import getFriends from "functions/getFriends";
 import { Resolvers, User, UserList } from "graphql/type-defs.graphqls";
 import { Context } from "./context";
@@ -77,20 +78,15 @@ const resolvers: Resolvers<Context> = {
       _,
       { input: { description, id, slug, title } },
       { twitterClient }
-    ) => {
-      const res = await twitterClient.accountsAndUsers.listsUpdate({
-        list_id: id,
-        slug,
-        ...(title && { name: title }),
-        ...(description && { description }),
-      });
-      return twitterClient.accountsAndUsers
-        .listsShow({
+    ) =>
+      twitterClient.accountsAndUsers
+        .listsUpdate({
           list_id: id,
           slug,
+          ...(title && { name: title }),
+          ...(description && { description }),
         })
-        .then(formatTwitterList);
-    },
+        .then(formatTwitterList),
   },
 };
 
