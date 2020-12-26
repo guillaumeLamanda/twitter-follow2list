@@ -8,11 +8,11 @@
 
 html,
 body {
-  @apply bg-gray-50 dark:bg-gray-900 min-h-screen;
+  @apply bg-gray-50 dark:bg-gray-900 min-h-screen max-h-screen overflow-hidden;
 }
 
 #__next {
-  @apply min-h-screen;
+  @apply min-h-screen max-h-screen overflow-hidden;
 }
 
 .text {
@@ -25,7 +25,7 @@ body {
 }
 
 .list {
-  @apply p-5 border border-blue-600 dark:border-gray-300 rounded;
+  @apply p-5 border border-blue-600 dark:border-gray-300 rounded overflow-scroll;
 }
 
 .content {

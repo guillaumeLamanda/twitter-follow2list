@@ -1,5 +1,5 @@
 query List {
-  lists(ownership: ALL) {
+  lists(ownership: OWNED) {
     id
     name
     uri

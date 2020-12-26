@@ -1,16 +1,30 @@
 import { NextPage } from "next";
-import getFriends from "functions/getFriends";
 import { FriendsList, ListsList } from "twitter-api-client";
 import { DragEvent, MouseEvent, useState } from "react";
-import getLists from "functions/getLists";
-import getUser from "functions/getUser";
+import WithApolloClient from "graphql/withApollo";
+import { initializeApollo } from "graphql/apollo";
+import {
+  FriendsDocument,
+  FriendsQuery,
+  FriendsQueryVariables,
+  useFriendsQuery,
+} from "graphql/queries/friends.graphql";
+import { useListQuery } from "graphql/queries/lists.graphql";
+
+const PAGE_SIZE = 15;
 
 type Props = {
   friends: FriendsList;
   lists: ListsList[];
 };
-const AppPage: NextPage<Props> = ({ friends, lists }) => {
-  const [selected, setSelected] = useState<Array<number>>([]);
+const AppPage: NextPage<Props> = () => {
+  const [selected, setSelected] = useState<Array<string>>([]);
+
+  const { data: { friends } = {} } = useFriendsQuery({
+    variables: { first: PAGE_SIZE },
+  });
+  const { data: { lists } = {} } = useListQuery();
+
   const toggleSelectedId = (id) => {
     setSelected(
       isIdSelected(selected, id)
@@ -19,10 +33,10 @@ const AppPage: NextPage<Props> = ({ friends, lists }) => {
     );
   };
 
-  const onFriendClick = (e: MouseEvent<HTMLButtonElement>, id: number) => {
+  const onFriendClick = (e: MouseEvent<HTMLButtonElement>, id: string) => {
     toggleSelectedId(id);
   };
-  const onFriendDragStart = (e: DragEvent<HTMLLIElement>, id: number) => {
+  const onFriendDragStart = (e: DragEvent<HTMLLIElement>, id: string) => {
     if (!isIdSelected) toggleSelectedId(id);
     e.dataTransfer.effectAllowed = "link";
     e.dataTransfer.setData("text/plain", selected.join(","));
@@ -32,13 +46,13 @@ const AppPage: NextPage<Props> = ({ friends, lists }) => {
   return (
     <div className="flex content justify-between">
       <ul className="list flex-col space-y-3 w-1/4">
-        {friends?.users.map(({ name, profile_image_url, id }) => (
+        {friends?.map(({ name, imageSrc, id }) => (
           <FriendListItem
             key={id}
             id={id}
             onFriendDragStart={onFriendDragStart}
             onFriendClick={onFriendClick}
-            profilImageUrl={profile_image_url}
+            profilImageUrl={imageSrc}
             name={name}
             selected={selected.some((sId) => sId === id)}
           />
@@ -46,7 +60,7 @@ const AppPage: NextPage<Props> = ({ friends, lists }) => {
       </ul>
 
       <ul className="list w-1/4">
-        {lists.map(({ name, description, id }) => (
+        {lists?.map(({ name, description, id }) => (
           <ListListItem key={id} name={name} description={description} />
         ))}
       </ul>
@@ -61,8 +75,6 @@ function ListListItem({ name, description }) {
     <li
       className="flex py-3 place-items-center place-content-between transition-all ease-in-out"
       onDrop={(e) => {
-        console.log({ drop: e });
-        console.log(e.dataTransfer.getData("text/plain"));
         if (e.currentTarget.classList.contains("py-7"))
           e.currentTarget.classList.remove("py-7");
         e.stopPropagation();
@@ -138,34 +150,18 @@ const ListDescriptionInput = ({ description }: ListDescriptionInputProps) => {
   );
 };
 
-function filterIdFromSelected(selected: number[], id: number) {
+function filterIdFromSelected(selected: string[], id: string) {
   return selected.filter((sId) => sId !== id);
 }
 
-function isIdSelected(selected: number[], id: number) {
+function isIdSelected(selected: string[], id: string) {
   return selected.some((selectedId) => selectedId === id);
 }
 
-export async function getServerSideProps() {
-  const friends = await getFriends();
-  const { screen_name: userScreenName } = await getUser();
-  const lists = await (await getLists()).filter(
-    ({ user: { screen_name } }) => screen_name === userScreenName
-  );
-
-  return {
-    props: {
-      friends,
-      lists,
-    },
-  };
-}
-export default AppPage;
-
 type FriendListItemProps = {
-  id: number;
-  onFriendDragStart: (e: DragEvent<HTMLLIElement>, id: number) => void;
-  onFriendClick: (e: MouseEvent<HTMLButtonElement>, id: number) => void;
+  id: string;
+  onFriendDragStart: (e: DragEvent<HTMLLIElement>, id: string) => void;
+  onFriendClick: (e: MouseEvent<HTMLButtonElement>, id: string) => void;
   name: string;
   profilImageUrl: string;
   selected: boolean;
@@ -197,3 +193,23 @@ function FriendListItem({
     </li>
   );
 }
+
+export const getStaticProps = async () => {
+  const client = initializeApollo();
+
+  await client.query<FriendsQuery, FriendsQueryVariables>({
+    query: FriendsDocument,
+    variables: { first: PAGE_SIZE },
+  });
+  // await client.query<ListQuery, ListQueryVariables>({
+  //   query: ListDocument,
+  // });
+
+  return {
+    props: {
+      initialApolloState: client.cache.extract(),
+    },
+  };
+};
+
+export default WithApolloClient(AppPage);
