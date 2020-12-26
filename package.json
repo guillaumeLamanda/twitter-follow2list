@@ -46,5 +46,8 @@
   "volta": {
     "node": "15.4.0",
     "yarn": "1.22.10"
-  }
+  },
+  "extensionDependencies": [
+    "apollographql.vscode-apollo"
+  ]
 }
