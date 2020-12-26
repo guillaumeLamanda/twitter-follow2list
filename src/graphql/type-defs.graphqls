@@ -1,6 +1,12 @@
 type Query {
   hello: String!
   friends(pagination: Pagination): [User!]!
+  lists(ownership: ListOwnership): [UserList!]!
+}
+
+enum ListOwnership {
+  OWNED
+  ALL
 }
 
 input Pagination {
@@ -22,4 +28,14 @@ type User implements Node {
   name: String!
   imageSrc: String!
   screenName: String!
+}
+
+type UserList implements Node {
+  id: ID!
+  name: String!
+  uri: String!
+  description: String!
+  slug: String!
+  fullName: String!
+  user: User!
 }

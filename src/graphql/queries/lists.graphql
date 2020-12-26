@@ -1,0 +1,14 @@
+query List {
+  lists(ownership: ALL) {
+    id
+    name
+    uri
+    description
+    slug
+    fullName
+    user {
+      id
+      screenName
+    }
+  }
+}
