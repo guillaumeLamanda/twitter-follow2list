@@ -1,7 +1,7 @@
 # import ListCommon from '../fragments/list/common.graphql'
 
-query Lists {
-  lists(ownership: OWNED) {
+query List($id: ID!, $slug: String!) {
+  list(id: $id, slug: $slug) {
     ...ListCommon
   }
 }

@@ -2,6 +2,18 @@ type Query {
   hello: String!
   friends(pagination: Pagination): [User!]!
   lists(ownership: ListOwnership): [UserList!]!
+  list(id: ID!, slug: String!): UserList!
+}
+
+type Mutation {
+  updateList(input: ListInput!): UserList!
+}
+
+input ListInput {
+  id: ID!
+  slug: String!
+  title: String
+  description: String
 }
 
 enum ListOwnership {

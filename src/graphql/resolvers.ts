@@ -1,8 +1,5 @@
 import getFriends from "functions/getFriends";
-import {
-  Resolvers,
-  User,
-} from "../../__generated__/src/graphql/type-defs.graphqls";
+import { Resolvers, User, UserList } from "graphql/type-defs.graphqls";
 import { Context } from "./context";
 
 const formatTwitterUser = ({
@@ -15,6 +12,24 @@ const formatTwitterUser = ({
   screenName: screen_name,
   imageSrc: profile_image_url,
   id: id_str,
+});
+
+const formatTwitterList = ({
+  description,
+  name,
+  full_name,
+  uri,
+  id_str,
+  slug,
+  user,
+}): UserList => ({
+  id: id_str,
+  name,
+  fullName: full_name,
+  description,
+  slug,
+  uri,
+  user: formatTwitterUser(user),
 });
 
 const resolvers: Resolvers<Context> = {
@@ -46,16 +61,35 @@ const resolvers: Resolvers<Context> = {
           .filter(({ user: { screen_name: listScreenName } }) =>
             ownership === "OWNED" ? screen_name === listScreenName : true
           )
-          .map(({ description, name, full_name, uri, id_str, slug, user }) => ({
-            id: id_str,
-            name,
-            fullName: full_name,
-            description,
-            slug,
-            uri,
-            user: formatTwitterUser(user),
-          }))
+          .map(formatTwitterList)
       );
+    },
+    list: async (_, { id, slug }, { twitterClient }) =>
+      twitterClient.accountsAndUsers
+        .listsShow({
+          list_id: id,
+          slug,
+        })
+        .then(formatTwitterList),
+  },
+  Mutation: {
+    updateList: async (
+      _,
+      { input: { description, id, slug, title } },
+      { twitterClient }
+    ) => {
+      const res = await twitterClient.accountsAndUsers.listsUpdate({
+        list_id: id,
+        slug,
+        ...(title && { name: title }),
+        ...(description && { description }),
+      });
+      return twitterClient.accountsAndUsers
+        .listsShow({
+          list_id: id,
+          slug,
+        })
+        .then(formatTwitterList);
     },
   },
 };

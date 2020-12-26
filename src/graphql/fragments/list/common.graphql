@@ -1,0 +1,6 @@
+fragment ListCommon on UserList {
+  id
+  name
+  slug
+  description
+}

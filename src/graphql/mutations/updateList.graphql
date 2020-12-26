@@ -1,7 +1,7 @@
 # import ListCommon from '../fragments/list/common.graphql'
 
-query Lists {
-  lists(ownership: OWNED) {
+mutation UpdateList($input: ListInput!) {
+  updateList(input: $input) {
     ...ListCommon
   }
 }
