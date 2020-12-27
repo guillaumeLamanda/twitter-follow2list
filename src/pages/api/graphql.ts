@@ -1,10 +1,10 @@
-import { ApolloServer, gql } from "apollo-server-micro";
-import { context } from "graphql/context";
+import { ApolloServer } from "apollo-server-micro";
 import schema from "graphql/schema";
+import { getContextFromRequest } from "graphql/context";
 
 const apolloServer = new ApolloServer({
   schema,
-  context,
+  context: ({ req }) => getContextFromRequest(req),
 });
 
 export const config = {

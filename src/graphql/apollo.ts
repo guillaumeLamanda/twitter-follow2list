@@ -15,25 +15,42 @@ export type ResolverContext = {
   res?: ServerResponse;
 };
 
-function createIsomorphLink(): ApolloLink {
+function createIsomorphLink(context?: Context): ApolloLink {
   if (typeof window === "undefined") {
+    // if (!context) throw new Error("no context provided");
     const { SchemaLink } = require("@apollo/client/link/schema");
     const { default: schema } = require("./schema");
-    const { context } = require("./context");
     return new SchemaLink({ schema, context });
   } else {
     const { HttpLink } = require("@apollo/client/link/http");
-    return new HttpLink({
+    const { setContext } = require("@apollo/client/link/context");
+    const authLink = setContext((_, { headers }) => {
+      // get the authentication token from local storage if it exists
+      const oauthToken = localStorage.getItem("oauthToken");
+      const oauthTokenSecret = localStorage.getItem("oauthTokenSecret");
+      // return the headers to the context so httpLink can read them
+      return {
+        headers: {
+          ...headers,
+          ...(oauthToken && {
+            authorization: oauthToken,
+          }),
+        },
+      };
+    });
+    const httpLink = new HttpLink({
       uri: "/api/graphql",
       credentials: "same-origin",
     });
+
+    return authLink.concat(httpLink);
   }
 }
 
-function createApolloClient() {
+function createApolloClient(context?: Context) {
   return new ApolloClient({
     ssrMode: typeof window === "undefined",
-    link: createIsomorphLink(),
+    link: createIsomorphLink(context),
     cache: new InMemoryCache(),
   });
 }
@@ -44,7 +61,7 @@ export function initializeApollo(
   // a custom context which will be used by `SchemaLink` to server render pages
   context?: Context
 ) {
-  const _apolloClient = apolloClient ?? createApolloClient();
+  const _apolloClient = apolloClient ?? createApolloClient(context);
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // get hydrated here
@@ -59,7 +76,9 @@ export function initializeApollo(
   return _apolloClient;
 }
 
-export function useApollo(initialState: any) {
-  const store = useMemo(() => initializeApollo(initialState), [initialState]);
+export function useApollo(initialState: any, context?: Context) {
+  const store = useMemo(() => initializeApollo(initialState, context), [
+    initialState,
+  ]);
   return store;
 }
