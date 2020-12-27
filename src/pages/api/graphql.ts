@@ -5,6 +5,7 @@ import { getContextFromRequest } from "graphql/context";
 const apolloServer = new ApolloServer({
   schema,
   context: ({ req }) => getContextFromRequest(req),
+  tracing: true,
 });
 
 export const config = {
