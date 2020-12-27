@@ -1,5 +1,4 @@
-import { NextPage } from "next";
-import { FriendsList, ListsList } from "twitter-api-client";
+import { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import { DragEvent, MouseEvent, useState } from "react";
 import WithApolloClient from "graphql/withApollo";
 import { initializeApollo } from "graphql/apollo";
@@ -11,14 +10,11 @@ import {
 } from "graphql/queries/friends.graphql";
 import { useListsQuery } from "graphql/queries/lists.graphql";
 import { FriendListItem, ListListItem } from "components";
+import { getContextFromRequest } from "graphql/context";
 
 const PAGE_SIZE = 15;
 
-type Props = {
-  friends: FriendsList;
-  lists: ListsList[];
-};
-const AppPage: NextPage<Props> = () => {
+const AppPage: NextPage = () => {
   const [selected, setSelected] = useState<Array<string>>([]);
 
   const { data: { friends } = {} } = useFriendsQuery({
@@ -41,7 +37,6 @@ const AppPage: NextPage<Props> = () => {
     if (!isIdSelected) toggleSelectedId(id);
     e.dataTransfer.effectAllowed = "link";
     e.dataTransfer.setData("text/plain", selected.join(","));
-    // e.dataTransfer.setDragImage()
   };
 
   return (
@@ -77,13 +72,13 @@ function isIdSelected(selected: string[], id: string) {
   return selected.some((selectedId) => selectedId === id);
 }
 
-export const getStaticProps = async () => {
-  const client = initializeApollo();
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  if (!req.headers.authorization) {
+    res.setHeader("Location", "/");
+    res.statusCode = 401;
+  }
 
-  await client.query<FriendsQuery, FriendsQueryVariables>({
-    query: FriendsDocument,
-    variables: { first: PAGE_SIZE },
-  });
+  const client = initializeApollo();
 
   return {
     props: {
