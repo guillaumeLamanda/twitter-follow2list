@@ -46,7 +46,11 @@ const resolvers: Resolvers<Context> = {
         ...(!!cursor && { cursor }),
       });
 
-      return Promise.all(friends.users.map(formatTwitterUser));
+      return {
+        nextCursor: friends.next_cursor_str,
+        previousCursor: friends.previous_cursor_str,
+        nodes: friends.users.map(formatTwitterUser),
+      };
     },
     lists: async (_, { ownership }, { twitterClient }) => {
       const {

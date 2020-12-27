@@ -8,11 +8,11 @@
 
 html,
 body {
-  @apply bg-gray-50 dark:bg-gray-900 min-h-screen max-h-screen overflow-hidden;
+  @apply bg-gray-50 dark:bg-gray-900 min-h-screen;
 }
 
 #__next {
-  @apply min-h-screen max-h-screen overflow-hidden;
+  @apply min-h-screen;
 }
 
 .text {

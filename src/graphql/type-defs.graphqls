@@ -1,6 +1,6 @@
 type Query {
   hello: String!
-  friends(pagination: Pagination): [User!]!
+  friends(pagination: Pagination): UsersConnection!
   lists(ownership: ListOwnership): [UserList!]!
   list(id: ID!, slug: String!): UserList!
 }
@@ -50,4 +50,10 @@ type UserList implements Node {
   slug: String!
   fullName: String!
   user: User!
+}
+
+type UsersConnection {
+  nextCursor: ID!
+  previousCursor: ID!
+  nodes: [User!]!
 }

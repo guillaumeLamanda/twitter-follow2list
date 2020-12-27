@@ -1,8 +1,12 @@
 query Friends($first: Int = 15, $after: ID) {
   friends(pagination: { after: $after, first: $first }) {
-    id
-    name
-    imageSrc
-    screenName
+    nextCursor
+    previousCursor
+    nodes {
+      id
+      name
+      imageSrc
+      screenName
+    }
   }
 }
