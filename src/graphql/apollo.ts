@@ -22,28 +22,9 @@ function createIsomorphLink(context?: Context): ApolloLink {
     const { default: schema } = require("./schema");
     return new SchemaLink({ schema, context });
   } else {
-    const { HttpLink } = require("@apollo/client/link/http");
-    const { setContext } = require("@apollo/client/link/context");
-    const authLink = setContext((_, { headers }) => {
-      // get the authentication token from local storage if it exists
-      const oauthToken = localStorage.getItem("oauthToken");
-      const oauthTokenSecret = localStorage.getItem("oauthTokenSecret");
-      // return the headers to the context so httpLink can read them
-      return {
-        headers: {
-          ...headers,
-          ...(oauthToken && {
-            authorization: oauthToken,
-          }),
-        },
-      };
-    });
-    const httpLink = new HttpLink({
-      uri: "/api/graphql",
-      credentials: "same-origin",
-    });
+    const { default: link } = require("./links");
 
-    return authLink.concat(httpLink);
+    return link;
   }
 }
 
