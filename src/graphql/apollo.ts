@@ -3,10 +3,10 @@ import { useMemo } from "react";
 import {
   ApolloClient,
   ApolloLink,
-  InMemoryCache,
   NormalizedCacheObject,
 } from "@apollo/client";
 import { Context } from "./context";
+import cache from "./cache";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
@@ -32,7 +32,7 @@ function createApolloClient(context?: Context) {
   return new ApolloClient({
     ssrMode: typeof window === "undefined",
     link: createIsomorphLink(context),
-    cache: new InMemoryCache(),
+    cache,
   });
 }
 
