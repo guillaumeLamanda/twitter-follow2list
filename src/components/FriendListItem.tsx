@@ -29,7 +29,12 @@ function FriendListItem({
           selected ? "border-green-600 border rounded" : ""
         }`}
       >
-        <img src={profilImageUrl} className="rounded-full" />
+        <img
+          src={profilImageUrl}
+          className="rounded-full"
+          width={50}
+          height={50}
+        />
         <span>{name}</span>
       </button>
     </li>
