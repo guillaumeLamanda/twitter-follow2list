@@ -35,7 +35,7 @@ function ListListItem({ id, slug }: ListListItemProps) {
 
   return (
     <li
-      className="flex py-3 place-items-center place-content-between transition-all ease-in-out"
+      className="flex py-3 place-items-center place-content-between transition-all ease-in-out space-x-3"
       onDrop={(e) => {
         if (e.currentTarget.classList.contains("py-7"))
           e.currentTarget.classList.remove("py-7");
@@ -58,7 +58,7 @@ function ListListItem({ id, slug }: ListListItemProps) {
     >
       <div className="space-y-1 flex flex-col">
         <span className="text-lg font-bold">{name}</span>
-        <span>{description}</span>
+        <span className="w-52">{description}</span>
       </div>
 
       <button onClick={() => setIsEditing(true)}>edit</button>
