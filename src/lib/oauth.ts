@@ -1,3 +1,4 @@
+import { callbackUrl } from "config";
 import { OAuth } from "oauth";
 
 const oauth = new OAuth(
@@ -6,7 +7,7 @@ const oauth = new OAuth(
   process.env.API_KEY,
   process.env.API_KEY_SECRET,
   "1.0A",
-  null,
+  callbackUrl,
   "HMAC-SHA1"
 );
 

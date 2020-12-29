@@ -1,10 +1,9 @@
 import oauth from "lib/oauth";
 import getRedisClient from "lib/redis";
 import { NextApiRequest, NextApiResponse } from "next";
-import { promisify } from "util";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     oauth.getOAuthRequestToken(async (err, oauthToken, oauthTokenSecret) => {
       if (err) {
         res.status(500);
