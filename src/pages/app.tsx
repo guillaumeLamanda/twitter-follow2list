@@ -8,6 +8,8 @@ import SelectedFriendsContext, {
   isIdSelected,
 } from "contexts/selected-friends";
 import MoveToListButton from "components/MoveToListButton";
+import SettingsContext, { initialState, Setting } from "contexts/settings";
+import ActionButton from "components/ActionButtons";
 
 const AppPage: NextPage = () => {
   const [selectedFriends, setSelectedFriends] = useState<Array<string>>([]);
@@ -20,6 +22,20 @@ const AppPage: NextPage = () => {
     );
   };
 
+  const [settings, setSettings] = useState<Array<Setting>>(initialState);
+  const updateSetting = (name: string, status: boolean) => {
+    setSettings(
+      settings.map((setting) =>
+        setting.name === name
+          ? {
+              ...setting,
+              status,
+            }
+          : setting
+      )
+    );
+  };
+
   return (
     <SelectedFriendsContext.Provider
       value={{
@@ -27,15 +43,22 @@ const AppPage: NextPage = () => {
         toggle: toggleSelectedId,
       }}
     >
-      <div className="flex justify-around">
-        <div className="my-10">
-          <span className="dark:text-gray-100 font-bold text-center mb-10">
-            Choose user(s) to put in a list
-          </span>
-          <FriendList />
+      <SettingsContext.Provider
+        value={{
+          settings,
+          update: updateSetting,
+        }}
+      >
+        <div className="flex justify-around">
+          <div className="my-10">
+            <span className="dark:text-gray-100 font-bold text-center mb-10">
+              Choose user(s) to put in a list
+            </span>
+            <FriendList />
+          </div>
         </div>
-      </div>
-      <MoveToListButton />
+        <ActionButton />
+      </SettingsContext.Provider>
     </SelectedFriendsContext.Provider>
   );
 };
