@@ -7,6 +7,7 @@ import SelectedFriendsContext, {
   filterIdFromSelected,
   isIdSelected,
 } from "contexts/selected-friends";
+import MoveToListButton from "components/MoveToListButton";
 
 const AppPage: NextPage = () => {
   const [selectedFriends, setSelectedFriends] = useState<Array<string>>([]);
@@ -34,6 +35,7 @@ const AppPage: NextPage = () => {
           <FriendList />
         </div>
       </div>
+      <MoveToListButton />
     </SelectedFriendsContext.Provider>
   );
 };
