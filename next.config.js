@@ -1,4 +1,5 @@
 module.exports = {
+  /** @param {import('webpack').Configuration} config */
   webpack(config, options) {
     config.module.rules.push({
       test: /\.graphql$/,
@@ -9,7 +10,14 @@ module.exports = {
     config.module.rules.push({
       test: /\.graphqls$/,
       exclude: /node_modules/,
-      use: ['graphql-let/schema/loader'],
+      use: [
+        'graphql-let/schema/loader',
+        /** 
+         * TODO: Disable this 👇 when `loadFiles` work on serverless
+         * @see schema.ts
+         */
+        'graphql-tag/loader'
+      ],
     })
 
     config.module.rules.push({
