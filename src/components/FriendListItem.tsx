@@ -25,8 +25,8 @@ function FriendListItem({
     >
       <button
         onClick={(e) => onFriendClick(e, id)}
-        className={`flex flex-grow place-items-center space-x-3 p-1 ${
-          selected ? "border-green-600 border rounded" : ""
+        className={`flex flex-grow place-items-center space-x-5 p-1 ${
+          selected ? "bg-gray-700 rounded" : "bg-transparent"
         }`}
       >
         <img
@@ -35,7 +35,7 @@ function FriendListItem({
           width={50}
           height={50}
         />
-        <span>{name}</span>
+        <span className="font-semibold">{name}</span>
       </button>
     </li>
   );

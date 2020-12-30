@@ -7,7 +7,6 @@ import SelectedFriendsContext, {
   filterIdFromSelected,
   isIdSelected,
 } from "contexts/selected-friends";
-import MoveToListButton from "components/MoveToListButton";
 import SettingsContext, { initialState, Setting } from "contexts/settings";
 import ActionButton from "components/ActionButtons";
 
@@ -49,9 +48,9 @@ const AppPage: NextPage = () => {
           update: updateSetting,
         }}
       >
-        <div className="flex justify-around">
-          <div className="my-10">
-            <span className="dark:text-gray-100 font-bold text-center mb-10">
+        <div className="mx-10">
+          <div className="pt-10 space-y-5 inline-flex flex-col">
+            <span className="dark:text-gray-100 font-bold text-center text-xl">
               Choose user(s) to put in a list
             </span>
             <FriendList />
