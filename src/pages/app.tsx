@@ -53,7 +53,9 @@ const AppPage: NextPage = () => {
             <span className="dark:text-gray-100 font-bold text-center text-xl">
               Choose user(s) to put in a list
             </span>
-            <FriendList />
+            <div className="max-h-75-vh overflow-y-auto">
+              <FriendList />
+            </div>
           </div>
         </div>
         <ActionButton />
