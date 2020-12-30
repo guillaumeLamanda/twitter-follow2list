@@ -44,8 +44,8 @@ export default (
               "secret",
               tokenSecret,
               () => {
-                const twoHoursInSeconds = 60 * 60 * 2;
-                redisClient.expire(oauth_token as string, twoHoursInSeconds);
+                const twelveHoursInSeconds = 60 * 60 * 12;
+                redisClient.expire(oauth_token as string, twelveHoursInSeconds);
                 redisClient.quit();
                 res.redirect(`/app`);
                 resolve(oauth_token);
