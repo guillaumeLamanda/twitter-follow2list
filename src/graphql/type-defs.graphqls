@@ -13,6 +13,7 @@ type Mutation {
 input FriendsToListInput {
   friendsIds: [ID!]!
   listId: ID!
+  unfollow: Boolean
 }
 
 input ListInput {

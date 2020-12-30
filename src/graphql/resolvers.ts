@@ -77,7 +77,7 @@ const resolvers: Resolvers<Context> = {
   Mutation: {
     addFriendsToList: async (
       _,
-      { input: { friendsIds, listId: list_id } },
+      { input: { friendsIds, listId: list_id, unfollow } },
       { twitterClient }
     ) => {
       await twitterClient.accountsAndUsers.listsMembersCreateAll({
@@ -85,6 +85,15 @@ const resolvers: Resolvers<Context> = {
         slug: list_id,
         user_id: friendsIds.join(","),
       });
+      if (unfollow) {
+        await Promise.all(
+          friendsIds.map((user_id) =>
+            twitterClient.accountsAndUsers.friendshipsDestroy({
+              user_id,
+            })
+          )
+        );
+      }
       return twitterClient.accountsAndUsers
         .listsShow({ list_id, slug: list_id })
         .then(formatTwitterList);
