@@ -5,11 +5,11 @@ const formatTwitterUser = ({
   id_str,
   name,
   screen_name,
-  profile_image_url,
+  profile_image_url_https,
 }): User => ({
   name,
   screenName: screen_name,
-  imageSrc: profile_image_url,
+  imageSrc: profile_image_url_https,
   id: id_str,
 });
 
