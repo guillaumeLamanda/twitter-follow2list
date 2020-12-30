@@ -14,12 +14,12 @@ export default function MoveToListButton() {
   return (
     <>
       {expended && (
-        <div className="h-1/3 overflow-scroll">
+        <div className="mx-5">
           <ListList />
         </div>
       )}
       <button
-        className="p-5 rounded-full bg-red-700 font-semibold text-gray-100"
+        className="p-3 rounded-full bg-red-700 font-semibold text-sm text-gray-100"
         onClick={toggleExpended}
       >
         Ajouter à une liste

@@ -31,7 +31,7 @@ export default function SettingsButton() {
         </ul>
       )}
       <button
-        className="p-5 rounded-full bg-blue-700 font-semibold text-gray-100 transform duration-200 ease-in-out"
+        className="p-3 rounded-full bg-blue-700 font-semibold text-gray-100 text-sm transform duration-200 ease-in-out"
         onClick={toggleExpended}
       >
         Settings
