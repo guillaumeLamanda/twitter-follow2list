@@ -32,6 +32,10 @@ body {
   @apply p-2;
 }
 
+.primary-button {
+  @apply py-1 px-2 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
 ul {
   @apply space-y-3;
 }
