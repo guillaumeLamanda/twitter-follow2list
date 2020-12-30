@@ -23,6 +23,8 @@ const getAuthFrom = async (
         "token",
         "secret",
         (err, [accessToken, accessTokenSecret] = []) => {
+          if (!accessToken || !accessTokenSecret)
+            reject(new ApolloError("Authentication expired", "AUTH_EXPIRED"));
           if (err) reject(new ApolloError("cannot authenticate"));
           redisClient.quit();
           resolve({
