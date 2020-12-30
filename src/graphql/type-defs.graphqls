@@ -7,6 +7,12 @@ type Query {
 
 type Mutation {
   updateList(input: ListInput!): UserList!
+  addFriendsToList(input: FriendsToListInput!): UserList!
+}
+
+input FriendsToListInput {
+  friendsIds: [ID!]!
+  listId: ID!
 }
 
 input ListInput {

@@ -1,5 +1,3 @@
-import { ApolloError } from "apollo-server-micro";
-import getFriends from "functions/getFriends";
 import { Resolvers, User, UserList } from "graphql/type-defs.graphqls";
 import { Context } from "./context";
 
@@ -61,13 +59,12 @@ const resolvers: Resolvers<Context> = {
           screen_name,
         }),
       });
-      return Promise.all(
-        lists
-          .filter(({ user: { screen_name: listScreenName } }) =>
-            ownership === "OWNED" ? screen_name === listScreenName : true
-          )
-          .map(formatTwitterList)
-      );
+
+      return lists
+        .filter(({ user: { screen_name: listScreenName } }) =>
+          ownership === "OWNED" ? screen_name === listScreenName : true
+        )
+        .map(formatTwitterList);
     },
     list: async (_, { id, slug }, { twitterClient }) =>
       twitterClient.accountsAndUsers
@@ -78,6 +75,20 @@ const resolvers: Resolvers<Context> = {
         .then(formatTwitterList),
   },
   Mutation: {
+    addFriendsToList: async (
+      _,
+      { input: { friendsIds, listId: list_id } },
+      { twitterClient }
+    ) => {
+      await twitterClient.accountsAndUsers.listsMembersCreateAll({
+        list_id,
+        slug: list_id,
+        user_id: friendsIds.join(","),
+      });
+      return twitterClient.accountsAndUsers
+        .listsShow({ list_id, slug: list_id })
+        .then(formatTwitterList);
+    },
     updateList: async (
       _,
       { input: { description, id, slug, title } },

@@ -1,0 +1,5 @@
+mutation AddFriendsToList($input: FriendsToListInput!) {
+  addFriendsToList(input: $input) {
+    id
+  }
+}
