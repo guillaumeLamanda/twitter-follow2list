@@ -1,9 +1,8 @@
 import { useCallback, useMemo, useState } from "react";
 import { useListQuery } from "graphql/queries/list.graphql";
-import ListForm from "./ListForm";
+import ListFormUpdate from "./ListFormUpdate";
 import { useSelectedFriends } from "contexts/selected-friends";
 import { useAddFriendsToListMutation } from "graphql/mutations/addFriendsToList.graphql";
-import { FriendsDocument } from "graphql/queries/friends.graphql";
 import { useSettings } from "contexts/settings";
 
 type ListListItemProps = {
@@ -57,16 +56,18 @@ function ListListItem({ id, slug }: ListListItemProps) {
     list: { name, description },
   } = data;
 
+  const hideForm = () => setIsEditing(false);
+
   if (isEditing)
     return (
       <li className="flex py-3 place-items-center place-content-between transition-all ease-in-out">
-        <ListForm
+        <ListFormUpdate
           id={id}
           slug={slug}
           description={description}
           name={name}
-          onSubmit={() => setIsEditing(false)}
-          onCancel={() => setIsEditing(false)}
+          onSubmit={hideForm}
+          onCancel={hideForm}
         />
       </li>
     );
