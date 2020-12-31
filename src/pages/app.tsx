@@ -21,6 +21,10 @@ const AppPage: NextPage = () => {
     );
   };
 
+  const resetSelectedFriends = () => {
+    setSelectedFriends([]);
+  };
+
   const [settings, setSettings] = useState<Array<Setting>>(initialState);
   const updateSetting = (name: string, status: boolean) => {
     setSettings(
@@ -40,6 +44,7 @@ const AppPage: NextPage = () => {
       value={{
         friends: selectedFriends,
         toggle: toggleSelectedId,
+        reset: resetSelectedFriends,
       }}
     >
       <SettingsContext.Provider

@@ -3,11 +3,13 @@ import { createContext, useContext } from "react";
 type SelectedFriendsContextType = {
   friends: string[];
   toggle: (id: string) => void;
+  reset: () => void;
 };
 
 const SelectedFriendsContext = createContext<SelectedFriendsContextType>({
   friends: [],
   toggle: () => {},
+  reset: () => {},
 });
 
 export function filterIdFromSelected(selected: string[], id: string) {
