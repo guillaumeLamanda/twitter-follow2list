@@ -1,24 +1,6 @@
 import { useListsQuery } from "graphql/queries/lists.graphql";
-import { useState } from "react";
-import ListForm from "./ListForm";
+import { ListFormAdd } from "./ListFormAdd";
 import ListListItem from "./ListListItem";
-
-function AddList() {
-  const [editing, setEditing] = useState(false);
-
-  // if(editing) return <ListForm />
-
-  return (
-    <button
-      className="primary-button"
-      onClick={() => {
-        setEditing(true);
-      }}
-    >
-      create new list
-    </button>
-  );
-}
 
 export default function ListList() {
   const { data } = useListsQuery();
@@ -27,7 +9,7 @@ export default function ListList() {
       {data?.lists?.map(({ id, slug }) => (
         <ListListItem key={id} id={id} slug={slug} />
       ))}
-      <AddList />
+      <ListFormAdd />
     </ul>
   );
 }
