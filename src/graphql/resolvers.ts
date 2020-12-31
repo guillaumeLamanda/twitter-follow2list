@@ -98,6 +98,17 @@ const resolvers: Resolvers<Context> = {
         .listsShow({ list_id, slug: list_id })
         .then(formatTwitterList);
     },
+    createList: async (
+      _,
+      { input: { description, title } },
+      { twitterClient }
+    ) =>
+      twitterClient.accountsAndUsers
+        .listsCreate({
+          name: title,
+          description,
+        })
+        .then(formatTwitterList),
     updateList: async (
       _,
       { input: { description, id, slug, title } },

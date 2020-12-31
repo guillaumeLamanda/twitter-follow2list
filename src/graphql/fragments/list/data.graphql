@@ -1,0 +1,4 @@
+fragment ListData on UserList {
+  name
+  description
+}

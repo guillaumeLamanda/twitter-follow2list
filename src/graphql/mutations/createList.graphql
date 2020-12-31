@@ -1,7 +1,7 @@
 # import ListCommon from '../fragments/list/common.graphql'
 
-mutation UpdateList($input: UpdateListInput!) {
-  updateList(input: $input) {
+mutation CreateList($input: CreateListInput!) {
+  createList(input: $input) {
     ...ListCommon
   }
 }

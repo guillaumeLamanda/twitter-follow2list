@@ -6,7 +6,8 @@ type Query {
 }
 
 type Mutation {
-  updateList(input: ListInput!): UserList!
+  createList(input: CreateListInput!): UserList!
+  updateList(input: UpdateListInput!): UserList!
   addFriendsToList(input: FriendsToListInput!): UserList!
 }
 
@@ -16,7 +17,12 @@ input FriendsToListInput {
   unfollow: Boolean
 }
 
-input ListInput {
+input CreateListInput {
+  title: String
+  description: String
+}
+
+input UpdateListInput {
   id: ID!
   slug: String!
   title: String
