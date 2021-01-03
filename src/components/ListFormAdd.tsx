@@ -38,6 +38,7 @@ export function ListFormAdd() {
         },
       },
     });
+    hideForm();
   };
 
   if (editing)
