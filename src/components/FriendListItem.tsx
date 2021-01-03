@@ -5,6 +5,7 @@ type FriendListItemProps = {
   onFriendDragStart: (e: DragEvent<HTMLLIElement>, id: string) => void;
   onFriendClick: (e: MouseEvent<HTMLButtonElement>, id: string) => void;
   name: string;
+  screenName: string;
   profilImageUrl: string;
   selected: boolean;
 };
@@ -15,19 +16,20 @@ function FriendListItem({
   profilImageUrl,
   name,
   selected,
+  screenName,
 }: FriendListItemProps) {
   return (
     <li
       key={id}
-      className="flex"
+      className={`flex place-items-center ${
+        selected ? "bg-gray-700 rounded" : "bg-transparent"
+      }`}
       onDragStart={(e) => onFriendDragStart(e, id)}
       draggable={true}
     >
       <button
         onClick={(e) => onFriendClick(e, id)}
-        className={`flex flex-grow place-items-center space-x-5 p-1 ${
-          selected ? "bg-gray-700 rounded" : "bg-transparent"
-        }`}
+        className={`flex flex-grow place-items-center space-x-5 p-1`}
       >
         <img
           src={profilImageUrl}
@@ -37,6 +39,9 @@ function FriendListItem({
         />
         <span className="font-semibold">{name}</span>
       </button>
+      <a href={`https://twitter.com/${screenName}`} target="_blank">
+        profil
+      </a>
     </li>
   );
 }

@@ -17,9 +17,15 @@ input FriendsToListInput {
   unfollow: Boolean
 }
 
+enum ListMode {
+  public
+  private
+}
+
 input CreateListInput {
   title: String
   description: String
+  mode: ListMode!
 }
 
 input UpdateListInput {
@@ -27,6 +33,7 @@ input UpdateListInput {
   slug: String!
   title: String
   description: String
+  mode: ListMode!
 }
 
 enum ListOwnership {
@@ -63,6 +70,7 @@ type UserList implements Node {
   slug: String!
   fullName: String!
   user: User!
+  mode: ListMode!
 }
 
 type UsersConnection {

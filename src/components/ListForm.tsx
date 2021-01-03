@@ -1,24 +1,35 @@
 import { FormikConfig, FormikProvider, useFormik } from "formik";
+import { ListMode } from "graphql/type-defs.graphqls";
 import ListDescriptionInput from "./ListDescriptionInput";
+import ListModeInput from "./ListModeInput";
 import ListTitleInput from "./ListTitleInput";
 
 export interface FormValues {
   name: string;
   description: string;
+  mode: ListMode;
 }
 
 type ListFormProps = {
   name: string;
   description: string;
+  mode: ListMode;
   onSubmit: FormikConfig<FormValues>["onSubmit"];
   onCancel: () => void;
 };
 
-const ListForm = ({ name, description, onSubmit, onCancel }: ListFormProps) => {
+const ListForm = ({
+  name,
+  description,
+  mode,
+  onSubmit,
+  onCancel,
+}: ListFormProps) => {
   const form = useFormik<FormValues>({
     initialValues: {
       name,
       description,
+      mode,
     },
     onSubmit,
   });
@@ -29,6 +40,7 @@ const ListForm = ({ name, description, onSubmit, onCancel }: ListFormProps) => {
         <div className="space-y-1">
           <ListTitleInput name="name" />
           <ListDescriptionInput name="description" />
+          <ListModeInput />
         </div>
         <div className="flex flex-col space-y-2 justify-around">
           <button

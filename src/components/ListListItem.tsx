@@ -57,7 +57,7 @@ function ListListItem({ id, slug }: ListListItemProps) {
   if (error) return <p>{error.message}</p>;
 
   const {
-    list: { name, description },
+    list: { name, description, mode },
   } = data;
 
   const hideForm = () => setIsEditing(false);
@@ -70,6 +70,7 @@ function ListListItem({ id, slug }: ListListItemProps) {
           slug={slug}
           description={description}
           name={name}
+          mode={mode}
           onSubmit={hideForm}
           onCancel={hideForm}
         />
@@ -103,6 +104,7 @@ function ListListItem({ id, slug }: ListListItemProps) {
       <div className="space-y-1 flex flex-col cursor-pointer" onClick={onClick}>
         <span className="text-lg font-bold">{name}</span>
         <span className="w-52">{description}</span>
+        <span className="font-light text-sm text-gray-400">{mode}</span>
       </div>
 
       <button onClick={() => setIsEditing(true)}>edit</button>

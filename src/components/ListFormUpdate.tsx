@@ -5,6 +5,7 @@ import {
   ListQuery,
   ListQueryVariables,
 } from "graphql/queries/list.graphql";
+import { ListMode } from "graphql/type-defs.graphqls";
 import { useCallback } from "react";
 import ListForm from "./ListForm";
 
@@ -13,6 +14,7 @@ export type ListFormUpdateProps = {
   slug: string;
   name: string;
   description: string;
+  mode: ListMode;
   onSubmit: () => void;
   onCancel: () => void;
 };
@@ -22,6 +24,7 @@ export default function ListFormUpdate({
   slug,
   name,
   description,
+  mode,
   onSubmit: _onSubmit,
   ...props
 }: ListFormUpdateProps) {
@@ -57,6 +60,7 @@ export default function ListFormUpdate({
         input: {
           id,
           slug,
+          mode: values.mode || mode,
           description: values.description,
           title: values.name,
         },
@@ -70,6 +74,7 @@ export default function ListFormUpdate({
       onSubmit={onSubmit}
       name={name}
       description={description}
+      mode={mode}
       {...props}
     />
   );

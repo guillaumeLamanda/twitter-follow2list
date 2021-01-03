@@ -21,6 +21,7 @@ const formatTwitterList = ({
   id_str,
   slug,
   user,
+  mode,
 }): UserList => ({
   id: id_str,
   name,
@@ -29,6 +30,7 @@ const formatTwitterList = ({
   slug,
   uri,
   user: formatTwitterUser(user),
+  mode,
 });
 
 const resolvers: Resolvers<Context> = {
@@ -100,18 +102,19 @@ const resolvers: Resolvers<Context> = {
     },
     createList: async (
       _,
-      { input: { description, title } },
+      { input: { description, title, mode } },
       { twitterClient }
     ) =>
       twitterClient.accountsAndUsers
         .listsCreate({
           name: title,
           description,
+          mode,
         })
         .then(formatTwitterList),
     updateList: async (
       _,
-      { input: { description, id, slug, title } },
+      { input: { description, id, slug, title, mode } },
       { twitterClient }
     ) =>
       twitterClient.accountsAndUsers
@@ -120,6 +123,7 @@ const resolvers: Resolvers<Context> = {
           slug,
           ...(title && { name: title }),
           ...(description && { description }),
+          mode,
         })
         .then(formatTwitterList),
   },

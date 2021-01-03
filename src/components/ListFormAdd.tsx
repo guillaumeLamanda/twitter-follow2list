@@ -1,5 +1,8 @@
 import { FormikValues } from "formik";
-import { useCreateListMutation } from "graphql/mutations/createList.graphql";
+import {
+  ListMode,
+  useCreateListMutation,
+} from "graphql/mutations/createList.graphql";
 import {
   ListsDocument,
   ListsQuery,
@@ -35,6 +38,7 @@ export function ListFormAdd() {
         input: {
           title: values.name,
           description: values.description,
+          mode: values.mode,
         },
       },
     });
@@ -46,6 +50,7 @@ export function ListFormAdd() {
       <ListForm
         description=""
         name=""
+        mode={ListMode.Private}
         onCancel={hideForm}
         onSubmit={onSubmit}
       />
