@@ -34,7 +34,7 @@ export default function FriendList() {
   return (
     <>
       <ul className="bg-gray-800 rounded p-5 inline-flex flex-col">
-        {data?.friends?.nodes.map(({ name, imageSrc, id }) => (
+        {data?.friends?.nodes.map(({ name, imageSrc, id, screenName }) => (
           <FriendListItem
             key={id}
             id={id}
@@ -42,6 +42,7 @@ export default function FriendList() {
             onFriendClick={onFriendClick}
             profilImageUrl={imageSrc}
             name={name}
+            screenName={screenName}
             selected={isIdSelected(selectedFriends, id)}
           />
         ))}
