@@ -22,7 +22,7 @@
     "isomorphic-unfetch": "^3.1.0",
     "next": "10.0.4",
     "oauth": "^0.9.15",
-    "postcss": "8.2.1",
+    "postcss": "8.2.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-use": "^15.3.4",
