@@ -8829,10 +8829,10 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
-twitter-api-client@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/twitter-api-client/-/twitter-api-client-1.2.1.tgz#191748d2b44282fa29f41adc8e537aa63b2565bd"
-  integrity sha512-Y4g+arUVpPm7Uh7oAaigMXAKrILk6PNIlLqrAZq+sU2mG0kRBIQ5Gqq01NK4MftHaGtwuYSjA0M97NSyj6GiOQ==
+twitter-api-client@1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/twitter-api-client/-/twitter-api-client-1.2.3.tgz#020c402a7e46939657f894d6ded03b0c09b8f09e"
+  integrity sha512-jbFFs3pSLStMRonvoLYbSqPBSQGtExsKc/PHmREk3CqYFl6RO87gMs+Ar3tRu1dcOQMEdLqhRBP7bRmCKTcwYw==
   dependencies:
     oauth "^0.9.15"
     object-sizeof "^1.6.1"
