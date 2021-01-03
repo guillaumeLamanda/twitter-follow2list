@@ -1,7 +1,7 @@
-# import ListData from './data.graphql'
-
 fragment ListCommon on UserList {
   id
   slug
-  ...ListData
+  name
+  description
+  mode
 }
