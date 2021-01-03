@@ -4,6 +4,7 @@ import ListFormUpdate from "./ListFormUpdate";
 import { useSelectedFriends } from "contexts/selected-friends";
 import { useAddFriendsToListMutation } from "graphql/mutations/addFriendsToList.graphql";
 import { useSettings } from "contexts/settings";
+import removeFriendsFromCache from "lib/removeFriendsFromCache";
 
 type ListListItemProps = {
   id: string;
@@ -33,12 +34,7 @@ function ListListItem({ id, slug }: ListListItemProps) {
       },
     },
     update: (cache) => {
-      if (unfollow)
-        friendsIds.forEach((friendId) => {
-          cache.evict({
-            id: `User:${friendId}`,
-          });
-        });
+      if (unfollow) removeFriendsFromCache(friendsIds, cache);
     },
     optimisticResponse: {
       addFriendsToList: {

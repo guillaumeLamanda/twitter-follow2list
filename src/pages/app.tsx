@@ -9,6 +9,7 @@ import SelectedFriendsContext, {
 } from "contexts/selected-friends";
 import SettingsContext, { initialState, Setting } from "contexts/settings";
 import ActionButton from "components/ActionButtons";
+import UnfollowButton from "components/UnfollowButton";
 
 const AppPage: NextPage = () => {
   const [selectedFriends, setSelectedFriends] = useState<Array<string>>([]);
@@ -61,6 +62,7 @@ const AppPage: NextPage = () => {
             <div className="max-h-75-vh overflow-y-auto">
               <FriendList />
             </div>
+            <UnfollowButton />
           </div>
         </div>
         <ActionButton />

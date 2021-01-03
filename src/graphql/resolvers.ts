@@ -112,6 +112,14 @@ const resolvers: Resolvers<Context> = {
           mode,
         })
         .then(formatTwitterList),
+    unfollow: (_, { ids }, { twitterClient }) =>
+      Promise.all(
+        ids.map((id) =>
+          twitterClient.accountsAndUsers.friendshipsDestroy({
+            user_id: id,
+          })
+        )
+      ).then((users) => users.map(formatTwitterUser)),
     updateList: async (
       _,
       { input: { description, id, slug, title, mode } },

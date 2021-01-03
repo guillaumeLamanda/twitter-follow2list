@@ -9,6 +9,7 @@ type Mutation {
   createList(input: CreateListInput!): UserList!
   updateList(input: UpdateListInput!): UserList!
   addFriendsToList(input: FriendsToListInput!): UserList!
+  unfollow(ids: [ID!]!): [User!]!
 }
 
 input FriendsToListInput {
