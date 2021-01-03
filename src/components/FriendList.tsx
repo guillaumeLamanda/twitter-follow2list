@@ -2,6 +2,7 @@ import { isIdSelected, useSelectedFriends } from "contexts/selected-friends";
 import { useFriendsQuery } from "graphql/queries/friends.graphql";
 import { DragEvent, MouseEvent } from "react";
 import FriendListItem from "./FriendListItem";
+import Loader from "./Loader";
 
 const PAGE_SIZE = 15;
 
@@ -29,7 +30,7 @@ export default function FriendList() {
         {error.message}
       </span>
     );
-  if (loading) return <span> loading...</span>;
+  if (loading) return <Loader />;
 
   return (
     <>
@@ -48,7 +49,7 @@ export default function FriendList() {
         ))}
         {data.friends.nextCursor !== "-1" && (
           <button
-            className="p-3 m-auto bg-blue-300 rounded"
+            className="p-1 m-auto bg-blue-300 rounded"
             onClick={() => {
               fetchMore({
                 variables: {

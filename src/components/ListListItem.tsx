@@ -5,6 +5,7 @@ import { useSelectedFriends } from "contexts/selected-friends";
 import { useAddFriendsToListMutation } from "graphql/mutations/addFriendsToList.graphql";
 import { useSettings } from "contexts/settings";
 import removeFriendsFromCache from "lib/removeFriendsFromCache";
+import Loader from "./Loader";
 
 type ListListItemProps = {
   id: string;
@@ -49,7 +50,7 @@ function ListListItem({ id, slug }: ListListItemProps) {
     resetSelectFriends();
   }, []);
 
-  if (loading) return <p>loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p>{error.message}</p>;
 
   const {
