@@ -18,7 +18,7 @@ export default function SettingsButton() {
               <input
                 type="checkbox"
                 checked={status}
-                onClick={() => {
+                onChange={() => {
                   update(name, !status);
                 }}
               />
