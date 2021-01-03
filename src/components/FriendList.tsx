@@ -45,19 +45,21 @@ export default function FriendList() {
             selected={isIdSelected(selectedFriends, id)}
           />
         ))}
-        <button
-          className="p-3 m-auto bg-blue-300 rounded"
-          onClick={() => {
-            fetchMore({
-              variables: {
-                after: data.friends.nextCursor,
-                first: PAGE_SIZE,
-              },
-            });
-          }}
-        >
-          load more
-        </button>
+        {data.friends.nextCursor !== "-1" && (
+          <button
+            className="p-3 m-auto bg-blue-300 rounded"
+            onClick={() => {
+              fetchMore({
+                variables: {
+                  after: data.friends.nextCursor,
+                  first: PAGE_SIZE,
+                },
+              });
+            }}
+          >
+            load more
+          </button>
+        )}
       </ul>
     </>
   );
