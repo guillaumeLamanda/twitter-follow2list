@@ -34,7 +34,7 @@ export default function FriendList() {
 
   return (
     <>
-      <ul className="bg-gray-800 rounded p-5 inline-flex flex-col">
+      <ul className="bg-gray-100 dark:bg-gray-800 rounded p-5 inline-flex flex-col">
         {data?.friends?.nodes.map(({ name, imageSrc, id, screenName }) => (
           <FriendListItem
             key={id}

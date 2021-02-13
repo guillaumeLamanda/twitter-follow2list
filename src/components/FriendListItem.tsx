@@ -22,7 +22,7 @@ function FriendListItem({
     <li
       key={id}
       className={`flex place-items-center ${
-        selected ? "bg-gray-700 rounded" : "bg-transparent"
+        selected ? "dark:bg-gray-700 bg-gray-300 rounded" : "bg-transparent"
       }`}
       onDragStart={(e) => onFriendDragStart(e, id)}
       draggable={true}
