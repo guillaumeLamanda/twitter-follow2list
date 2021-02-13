@@ -7823,10 +7823,10 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
-twitter-api-client@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/twitter-api-client/-/twitter-api-client-1.3.0.tgz#14e70cc54550c19e2674f292024321a9da5426aa"
-  integrity sha512-wzZC2CG3SkgWigbsr7dSTdAgX6j70zqzx35suL+riuya39GF7x3AppLhWFLpX3IifZMYVi+vJBjO9FlT1OA6NA==
+twitter-api-client@1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/twitter-api-client/-/twitter-api-client-1.3.1.tgz#addb3d794b6bba97110532ffbbba2cff447df0c1"
+  integrity sha512-TbWNzPuEjGbb3aO0Z4dHWWKogKH3gtGt/+YluB//pMynZowlyKmv1FFO1YSnFtnRr3zvQEgchI7933rUQi77nw==
   dependencies:
     oauth "^0.9.15"
     object-sizeof "^1.6.1"
