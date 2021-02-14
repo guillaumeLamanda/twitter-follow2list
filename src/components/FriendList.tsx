@@ -24,6 +24,8 @@ export default function FriendList() {
     e.dataTransfer.setData("text/plain", selectedFriends.join(","));
   };
 
+  const hasNextPage = data.friends.nextCursor !== "-1";
+
   if (error)
     return (
       <span className="text-red-500 bg-red-200 p-3 rounded">
@@ -47,7 +49,7 @@ export default function FriendList() {
             selected={isIdSelected(selectedFriends, id)}
           />
         ))}
-        {data.friends.nextCursor !== "-1" && (
+        {hasNextPage && (
           <button
             className="p-1 m-auto bg-blue-300 rounded"
             onClick={() => {
