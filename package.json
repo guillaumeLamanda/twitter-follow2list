@@ -10,7 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@apollo/client": "3.3.9",
+    "@apollo/client": "3.3.10",
     "@graphql-tools/load-files": "6.2.5",
     "@graphql-tools/merge": "6.2.7",
     "@graphql-tools/schema": "7.1.3",
