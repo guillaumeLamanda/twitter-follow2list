@@ -24,7 +24,7 @@ export default function FriendList() {
     e.dataTransfer.setData("text/plain", selectedFriends.join(","));
   };
 
-  const hasNextPage = data.friends.nextCursor !== "-1";
+  const hasNextPage = data?.friends.nextCursor !== "-1";
 
   if (error)
     return (
