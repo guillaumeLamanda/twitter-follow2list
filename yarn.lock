@@ -913,10 +913,10 @@
     "@graphql-tools/utils" "^7.0.0"
     tslib "~2.0.1"
 
-"@graphql-tools/load-files@6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/load-files/-/load-files-6.3.0.tgz#3957e21e14eb078f68fb4ebe84702f1bdc03ca23"
-  integrity sha512-qDEMz3f5CQz8lIvIhzJVK6Fvd6TMMbhuqded4x5I6zWEetR4AUmwneHWnQkwyIRqDDGgy6VlBw7GToucUkvQag==
+"@graphql-tools/load-files@6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/load-files/-/load-files-6.3.1.tgz#7d7726fcb53924ad0cfbdf3f86e7c376abf70c8e"
+  integrity sha512-y/qGcuKWW3mSPbIHEN5csM9xM0ow479NqtEOPeC1i9wqLml82ubaPS8BzXMhB8DJa5XmrGzIZvrt03CBkQ4aJA==
   dependencies:
     globby "11.0.2"
     tslib "~2.1.0"
