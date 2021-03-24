@@ -7745,10 +7745,10 @@ tty-browserify@0.0.0:
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
   integrity sha1-oVe6QC2iTpv5V/mqadUk7tQpAaY=
 
-twitter-api-client@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/twitter-api-client/-/twitter-api-client-1.3.2.tgz#aabe7df2ffe3f7b10e26ca8ce8fc20dff1dff169"
-  integrity sha512-xZ21Ah2ypNZ8/3dvPgzrlbi2Rehgbt1fylPTO0hKoNeAjeWF/w7TKgtqVtmUpSyIQDlRdnSXf0vRZaVSGeIIVg==
+twitter-api-client@1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/twitter-api-client/-/twitter-api-client-1.3.4.tgz#cd150f6772aaa6340063559d32e6f6bbc3a8623c"
+  integrity sha512-VCmsHmt679mytufRP7oItT0rdO3Ijkrur9hBNAm/esgx41e/SPPko+Btq2Y/LmQ6COjXQh5bUoVnsXo8f0YKJQ==
   dependencies:
     oauth "^0.9.15"
     object-sizeof "^1.6.1"
