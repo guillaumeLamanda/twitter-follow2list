@@ -11,6 +11,8 @@ import typeDefs from "./type-defs.graphqls";
 // const typeDefs = mergeTypeDefs(loadedFiles);
 
 export default makeExecutableSchema({
+  // TS see `typeDefs` as a type only.
+  // @ts-ignore
   typeDefs,
   resolvers,
 });
