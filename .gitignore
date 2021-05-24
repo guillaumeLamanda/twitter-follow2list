@@ -25,6 +25,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # graphql-let
-__generated__
+# .cache TODO: Re-enable this when pigslove
 *.graphql.d.ts
 *.graphqls.d.ts
