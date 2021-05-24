@@ -1,13 +1,11 @@
 import { FormikValues } from "formik";
-import {
-  ListMode,
-  useCreateListMutation,
-} from "graphql/mutations/createList.graphql";
+import { useCreateListMutation } from "graphql/mutations/createList.graphql";
 import {
   ListsDocument,
   ListsQuery,
   ListsQueryVariables,
 } from "graphql/queries/lists.graphql";
+import { ListMode } from "../../.cache/__types__";
 import { useState } from "react";
 import ListForm from "./ListForm";
 

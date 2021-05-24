@@ -1,4 +1,4 @@
-import { Resolvers, User, UserList } from "graphql/type-defs.graphqls";
+import { Resolvers, User, UserList } from "../../.cache/__types__";
 import { Context } from "./context";
 
 const formatTwitterUser = ({
@@ -53,9 +53,8 @@ const resolvers: Resolvers<Context> = {
       };
     },
     lists: async (_, { ownership }, { twitterClient }) => {
-      const {
-        screen_name,
-      } = await twitterClient.accountsAndUsers.accountSettings();
+      const { screen_name } =
+        await twitterClient.accountsAndUsers.accountSettings();
       const lists = await twitterClient.accountsAndUsers.listsList({
         ...(ownership === "OWNED" && {
           screen_name,

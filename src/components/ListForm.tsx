@@ -1,8 +1,8 @@
 import { FormikConfig, FormikProvider, useFormik } from "formik";
-import { ListMode } from "graphql/type-defs.graphqls";
 import ListDescriptionInput from "./ListDescriptionInput";
 import ListModeInput from "./ListModeInput";
 import ListTitleInput from "./ListTitleInput";
+import { ListMode } from "../../.cache/__types__";
 
 export interface FormValues {
   name: string;
