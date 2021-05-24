@@ -5,7 +5,7 @@ import {
   ListQuery,
   ListQueryVariables,
 } from "graphql/queries/list.graphql";
-import { ListMode } from "graphql/type-defs.graphqls";
+import { ListMode } from "../../.cache/__types__";
 import { useCallback } from "react";
 import ListForm from "./ListForm";
 
