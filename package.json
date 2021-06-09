@@ -39,7 +39,7 @@
     "@graphql-codegen/typescript-react-apollo": "2.2.5",
     "@types/node": "14.17.3",
     "@types/oauth": "0.9.1",
-    "@types/react": "17.0.10",
+    "@types/react": "17.0.11",
     "@typescript-eslint/eslint-plugin": "4.26.1",
     "@typescript-eslint/parser": "4.26.1",
     "add": "2.0.6",
