@@ -4598,10 +4598,10 @@ graphql-extensions@^0.15.0:
     apollo-server-env "^3.1.0"
     apollo-server-types "^0.9.0"
 
-graphql-let@0.18.2:
-  version "0.18.2"
-  resolved "https://registry.yarnpkg.com/graphql-let/-/graphql-let-0.18.2.tgz#3ac3d86cc988f5d5125978f4024841ca89b49516"
-  integrity sha512-h7CLCDFz5D3YLwSBhT8WCB7nkzpKeRWiTNVObDmcNH0tcCN58L/BOImyMM5rDWBgM62g5m7xdmGRe0HnsUP10A==
+graphql-let@0.18.3:
+  version "0.18.3"
+  resolved "https://registry.yarnpkg.com/graphql-let/-/graphql-let-0.18.3.tgz#f52c265473d7916d7d88e912904038666ddc18e6"
+  integrity sha512-cvlXXh4wvtSOd67HCUZI6Nl+yIcsB7Z2/m0vly5xuO6H01q5lq92NyUNMMNCoCehELtxfM7nCBAu2EsloBndVg==
   dependencies:
     "@babel/core" "^7.14.3"
     "@babel/helper-plugin-utils" "^7.10.4"
