@@ -17,10 +17,8 @@ function ListListItem({ id, slug }: ListListItemProps) {
     variables: { id, slug },
     fetchPolicy: "cache-first",
   });
-  const {
-    friends: friendsIds,
-    reset: resetSelectFriends,
-  } = useSelectedFriends();
+  const { friends: friendsIds, reset: resetSelectFriends } =
+    useSelectedFriends();
   const { settings } = useSettings();
   const unfollow = useMemo(
     () => settings.find(({ name }) => name === "Unfollow").status,
@@ -48,7 +46,7 @@ function ListListItem({ id, slug }: ListListItemProps) {
   const onClick = useCallback(async () => {
     await addFriendsToList();
     resetSelectFriends();
-  }, []);
+  }, [addFriendsToList, resetSelectFriends]);
 
   if (loading) return <Loader />;
   if (error) return <p>{error.message}</p>;

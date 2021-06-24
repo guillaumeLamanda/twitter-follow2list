@@ -18,7 +18,7 @@ export default function UnfollowButton() {
       },
     });
     reset();
-  }, [friends]);
+  }, [friends, reset, unfollow]);
 
   return (
     !!friends.length && (

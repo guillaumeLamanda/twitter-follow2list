@@ -2,7 +2,10 @@ import oauth from "lib/oauth";
 import getRedisClient from "lib/redis";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+const oAuthRequestTokenHandler = (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
   return new Promise((resolve) => {
     oauth.getOAuthRequestToken(async (err, oauthToken, oauthTokenSecret) => {
       if (err) {
@@ -30,3 +33,5 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     });
   });
 };
+
+export default oAuthRequestTokenHandler;
