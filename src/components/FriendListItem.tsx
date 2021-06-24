@@ -33,13 +33,18 @@ function FriendListItem({
       >
         <img
           src={profilImageUrl}
+          alt={`friend ${name}`}
           className="rounded-full"
           width={50}
           height={50}
         />
         <span className="font-semibold">{name}</span>
       </button>
-      <a href={`https://twitter.com/${screenName}`} target="_blank">
+      <a
+        href={`https://twitter.com/${screenName}`}
+        target="_blank"
+        rel="noreferrer"
+      >
         profil
       </a>
     </li>

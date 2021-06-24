@@ -8,7 +8,7 @@ export const config = {
   },
 };
 
-export default (
+const oAuthCallbackHandler = (
   { query: { oauth_token, oauth_verifier } }: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -57,3 +57,5 @@ export default (
     });
   });
 };
+
+export default oAuthCallbackHandler;

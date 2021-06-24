@@ -58,8 +58,9 @@ export function initializeApollo(
 }
 
 export function useApollo(initialState: any, context?: Context) {
-  const store = useMemo(() => initializeApollo(initialState, context), [
-    initialState,
-  ]);
+  const store = useMemo(
+    () => initializeApollo(initialState, context),
+    [context, initialState]
+  );
   return store;
 }

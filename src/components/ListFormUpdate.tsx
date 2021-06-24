@@ -54,20 +54,23 @@ export default function ListFormUpdate({
     },
   });
 
-  const onSubmit = useCallback(async (values: FormikValues) => {
-    await updateList({
-      variables: {
-        input: {
-          id,
-          slug,
-          mode: values.mode || mode,
-          description: values.description,
-          title: values.name,
+  const onSubmit = useCallback(
+    async (values: FormikValues) => {
+      await updateList({
+        variables: {
+          input: {
+            id,
+            slug,
+            mode: values.mode || mode,
+            description: values.description,
+            title: values.name,
+          },
         },
-      },
-    });
-    _onSubmit();
-  }, []);
+      });
+      _onSubmit();
+    },
+    [_onSubmit, id, mode, slug, updateList]
+  );
 
   return (
     <ListForm
