@@ -5,6 +5,7 @@ env:
 extends:
   - "eslint:recommended"
   - "plugin:@typescript-eslint/eslint-recommended"
+  - "next"
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
