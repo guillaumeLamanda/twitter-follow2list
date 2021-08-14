@@ -44,7 +44,7 @@
     "@typescript-eslint/parser": "4.29.1",
     "add": "2.0.6",
     "eslint": "7.32.0",
-    "eslint-config-next": "11.0.1",
+    "eslint-config-next": "11.1.0",
     "eslint-plugin-react": "7.24.0",
     "graphql-let": "0.18.4",
     "graphql-tag": "2.12.5",
