@@ -37,7 +37,7 @@
     "@graphql-codegen/typescript": "2.1.0",
     "@graphql-codegen/typescript-operations": "2.1.0",
     "@graphql-codegen/typescript-react-apollo": "3.1.0",
-    "@types/node": "14.17.10",
+    "@types/node": "14.17.11",
     "@types/oauth": "0.9.1",
     "@types/react": "17.0.19",
     "@typescript-eslint/eslint-plugin": "4.29.2",
