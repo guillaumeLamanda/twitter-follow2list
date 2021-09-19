@@ -45,7 +45,7 @@
     "add": "2.0.6",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
-    "eslint-plugin-react": "7.25.2",
+    "eslint-plugin-react": "7.25.3",
     "graphql-let": "0.18.5",
     "graphql-tag": "2.12.5",
     "typescript": "4.4.3",
