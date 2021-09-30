@@ -50,14 +50,14 @@
     "graphql-tag": "2.12.5",
     "typescript": "4.4.3",
     "yaml-loader": "0.6.0",
-    "yarn": "1.22.13"
+    "yarn": "1.22.15"
   },
   "peerDependencies": {
     "@babel/runtime": "*"
   },
   "volta": {
     "node": "15.4.0",
-    "yarn": "1.22.13"
+    "yarn": "1.22.15"
   },
   "extensionDependencies": [
     "apollographql.vscode-apollo"
