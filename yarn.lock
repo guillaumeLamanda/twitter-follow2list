@@ -1260,10 +1260,10 @@
     tslib "~2.3.0"
     unixify "^1.0.0"
 
-"@graphql-tools/load-files@6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/load-files/-/load-files-6.5.0.tgz#e654456c81ca0129aa847c83dcbf65d41be7dbc8"
-  integrity sha512-/Q4Mrnv8QdJ+5dUKTAAW/pqsNengBJvA8FluwUXNTpx2D4X6/bDIAHef0xpNzSSEO4zFnRy5hi9sCEYvFvFIdA==
+"@graphql-tools/load-files@6.5.1":
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/load-files/-/load-files-6.5.1.tgz#f0945f995a339a7adf6d310b87dd8f2d1fcd17a9"
+  integrity sha512-d+wMq/t2o4VctfKl4ZaCq0djKOErzvw9WI56HjKpoVji7zRz+WCbs1EgZjVneas+Cvf14cPvBTheFuL9j7w46w==
   dependencies:
     globby "11.0.4"
     tslib "~2.3.0"
