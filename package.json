@@ -56,7 +56,7 @@
     "@babel/runtime": "*"
   },
   "volta": {
-    "node": "16.12.0",
+    "node": "16.13.0",
     "yarn": "1.22.17"
   },
   "extensionDependencies": [
