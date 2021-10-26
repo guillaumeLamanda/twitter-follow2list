@@ -37,7 +37,7 @@
     "@graphql-codegen/typescript": "2.2.2",
     "@graphql-codegen/typescript-operations": "2.1.6",
     "@graphql-codegen/typescript-react-apollo": "3.1.4",
-    "@types/node": "14.17.32",
+    "@types/node": "16.11.6",
     "@types/oauth": "0.9.1",
     "@types/react": "17.0.33",
     "@typescript-eslint/eslint-plugin": "5.2.0",
@@ -56,7 +56,7 @@
     "@babel/runtime": "*"
   },
   "volta": {
-    "node": "15.4.0",
+    "node": "16.12.0",
     "yarn": "1.22.17"
   },
   "extensionDependencies": [
