@@ -8116,10 +8116,10 @@ tty-browserify@0.0.1:
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.1.tgz#3f05251ee17904dfd0677546670db9651682b811"
   integrity sha512-C3TaO7K81YvjCgQH9Q1S3R3P3BtN3RIM8n+OvX4il1K1zgE8ZhI0op7kClgkxtutIE8hQrcrHBXvIheqKUUCxw==
 
-twitter-api-client@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/twitter-api-client/-/twitter-api-client-1.5.0.tgz#8fa9c6b34b7ad99025dad080d1d609646ad148d3"
-  integrity sha512-iZA0PLK1/f4yYlGODgbN/Oz60/8rUDrHboCjG8SdDupeLnn+ZPHCXU6U8zCxAyIF4k5duVRvOR9Ru55mT7JLQw==
+twitter-api-client@1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/twitter-api-client/-/twitter-api-client-1.5.1.tgz#9823ce8370fd6001934a6be0d14e0062cd549c43"
+  integrity sha512-I+hdaoFdkV/ilFRqHGgi5NrTiY6unS/75N9pelN3qBQ2rQh9s0TwcdFkjUOCRQoHkXcEUI4AH2XULN01XvBMMA==
   dependencies:
     oauth "^0.9.15"
     object-sizeof "^1.6.1"
