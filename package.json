@@ -16,7 +16,7 @@
     "@graphql-tools/schema": "8.3.1",
     "@types/redis": "2.8.32",
     "apollo-server-micro": "2.25.3",
-    "autoprefixer": "10.4.0",
+    "autoprefixer": "10.4.1",
     "formik": "2.2.9",
     "graphql": "15.8.0",
     "isomorphic-unfetch": "3.1.0",
