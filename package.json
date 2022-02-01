@@ -14,7 +14,7 @@
     "@graphql-tools/load-files": "6.5.3",
     "@graphql-tools/merge": "8.2.1",
     "@graphql-tools/schema": "8.3.1",
-    "@types/redis": "2.8.32",
+    "@types/redis": "4.0.10",
     "apollo-server-micro": "2.25.3",
     "autoprefixer": "10.4.2",
     "formik": "2.2.9",
@@ -26,7 +26,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-use": "17.3.2",
-    "redis": "3.1.2",
+    "redis": "4.0.3",
     "tailwindcss": "3.0.18",
     "twitter-api-client": "1.5.1"
   },
