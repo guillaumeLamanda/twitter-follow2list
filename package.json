@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@apollo/client": "3.5.8",
-    "@graphql-tools/load-files": "6.5.3",
-    "@graphql-tools/merge": "8.2.1",
-    "@graphql-tools/schema": "8.3.1",
+    "@graphql-tools/load-files": "6.6.1",
+    "@graphql-tools/merge": "8.4.2",
+    "@graphql-tools/schema": "8.5.1",
     "@types/redis": "4.0.10",
     "apollo-server-micro": "2.25.3",
     "autoprefixer": "10.4.2",
